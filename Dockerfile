@@ -1,14 +1,15 @@
-FROM ubuntu:latest
+FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y \
-  python 3.x \
-  python 3-pip \
+  python3.x \
+  python3-pip \
   git
 
 RUN pip3 install PyYAML
 
 COPY feed.py /usr/bin/feed.py
 
-COPY entrypoint.sh /rentrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
